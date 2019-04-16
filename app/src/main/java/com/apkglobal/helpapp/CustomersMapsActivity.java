@@ -141,10 +141,11 @@ public class CustomersMapsActivity extends FragmentActivity implements OnMapRead
                     HashMap driverMap= new HashMap();
                     driverMap.put("CustomerRideID",customerID);
                     DriversRef.updateChildren(driverMap);
-                    
+
 
                     CallTransportButton.setText("Looking for Driver Location...");
                     GettingDriverLocation();
+
 
 
                 }

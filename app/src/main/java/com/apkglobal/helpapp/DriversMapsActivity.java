@@ -227,25 +227,29 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
         {
             Toast.makeText(getApplicationContext(),"User not registered",Toast.LENGTH_SHORT).show();
         }*/
-       switch (customerID)
+            geoFireAvailability.setLocation(userID, new GeoLocation(location.getLatitude(), location.getLongitude()), new GeoFire.CompletionListener() {
+                @Override
+                public void onComplete(String key, DatabaseError error) {
+                    if (error != null) {
+                        System.err.print("error saving location");
+                    } else {
+                        System.err.print("Location saved");
+                    }
+                }
+            });
+            geoFireWorking.setLocation(userID, new GeoLocation(location.getLatitude(), location.getLongitude()), new GeoFire.CompletionListener() {
+                @Override
+                public void onComplete(String key, DatabaseError error) {
+                    if (error != null) {
+                        System.err.print("error saving location");
+                    } else {
+                        System.err.print("Location saved");
+                    }
+                }
+            });
+       /*switch (customerID)
             {
-
-
-
                 case "":
-                    //geoFireAvailability.removeLocation(userID);
-                    geoFireWorking.setLocation(userID, new GeoLocation(location.getLatitude(), location.getLongitude()), new GeoFire.CompletionListener() {
-                        @Override
-                        public void onComplete(String key, DatabaseError error) {
-                            if (error != null) {
-                                System.err.print("error saving location");
-                            } else {
-                                System.err.print("Location saved");
-                            }
-                        }
-                    });
-                    break;
-                default:
                     //geoFireWorking.removeLocation(userID);
                     geoFireAvailability.setLocation(userID, new GeoLocation(location.getLatitude(), location.getLongitude()), new GeoFire.CompletionListener() {
                         @Override
@@ -258,7 +262,23 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
                         }
                     });
                     break;
-            }
+
+
+                default:
+                    //geoFireAvailability.removeLocation(userID);
+                    geoFireWorking.setLocation(userID, new GeoLocation(location.getLatitude(), location.getLongitude()), new GeoFire.CompletionListener() {
+                        @Override
+                        public void onComplete(String key, DatabaseError error) {
+                            if (error != null) {
+                                System.err.print("error saving location");
+                            } else {
+                                System.err.print("Location saved");
+                            }
+                        }
+                    });
+                    break;
+
+            }*/
 
 
         }
